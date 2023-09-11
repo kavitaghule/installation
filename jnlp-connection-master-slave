@@ -1,0 +1,12 @@
+go to /jenkins-url/jenkins/computer
+built in node= controller
+have to create nodes 
+crete node1/permenant agent/ok//name/label/no of executer=2/3/4/
+remote dir=/opt/project-1
+lauch method= lauch agent via controller
+save
+prerequisits on node1=
+java installed
+run cmds given on node/ jenkins
+run cmd on node/ec2
+{nohup url & }= always have to run node1 online
