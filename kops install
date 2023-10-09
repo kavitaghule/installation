@@ -18,7 +18,8 @@ curl -LO https://github.com/kubernetes/kops/releases/download/$(curl -s https://
 chmod +x kops-linux-amd64
 sudo mv kops-linux-amd64 /bin/kops
 yum update && yum install kops
-aws route53 create-hosted-zone --name dev.local --caller-reference 1
-aws s3 mb s3://dev.local
+aws s3api create-bucket --bucket dev.local1 --region us-east-1
+#aws route53 create-hosted-zone --name dev.local --caller-reference 1
+#aws s3 mb s3://dev.local
 KOPS_STATE_STORE=s3://dev.local
 kops create cluster --name=demok8scluster.k8s.local --state=s3://dev.local --zones=ap-south-1 --node-count=3 --node-size=t2.micro --master-size=t2.micro  --master-volume-size=8 --node-volume-size=8 --yes
