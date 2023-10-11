@@ -1,0 +1,44 @@
+Dashboard-Manage Jenkins-Plugins-> Email Extension Template Plugin Version1.5-download
+1} E-mail Notification
+SMTP server->smtp.gmail.com
+
+Advanced
+
+Edited
+
+Use SMTP Authentication->
+User Name
+kakadekavita31@gmail.com
+Password - taai shdm zmaw vxqp
+
+
+Use SSL yes
+Use TLS yes
+SMTP Port->465
+
+Test configuration by sending test e-mail
+Test e-mail recipient
+kavighule6@gmail.com
+Test configuration test
+Email was successfully sent
+
+Dashboard-ManageJenkins-system
+2}  Extended E-mail Notification
+SMTP server
+smtp.gmail.com
+SMTP Port
+465
+Advanced
+
+#create job
+3} Build Steps
+Execute shell
+Command-echoo "abc"
+
+
+4} Post-build Actions
+Editable Email Notification
+Allows the user to disable the publisher, while maintaining the settings
+Project Recipient List-kavighule6@gmail.com
+Apply
+
