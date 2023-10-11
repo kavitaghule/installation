@@ -1,1 +1,15 @@
+git -> repo-terraform-settings-webhook-create webhook-
+Payload URL
+http://52.66.79.126:8080/jenkins/github-webhook/
+Secret
+-> jenkins token- add webhook
+jenkins->
+Dashboard-Manage Jenkins-Security
+Git plugin notifyCommit access tokens
+Current access tokens
+?
+There are no access tokens yet.
+Access token name_
+
+in jenkins-job tick on githook trigger
 
