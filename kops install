@@ -18,8 +18,13 @@ curl -LO https://github.com/kubernetes/kops/releases/download/$(curl -s https://
 chmod +x kops-linux-amd64
 sudo mv kops-linux-amd64 /bin/kops
 yum update && yum install kops
-aws s3api create-bucket --bucket dev.local1 --region us-east-1
+aws s3api create-bucket --bucket dev.local1 --region ap-south-1
 #aws route53 create-hosted-zone --name dev.local --caller-reference 1
 #aws s3 mb s3://dev.local
 KOPS_STATE_STORE=s3://dev.local
-kops create cluster --name=demok8scluster.k8s.local --state=s3://dev.local --zones=ap-south-1 --node-count=3 --node-size=t2.micro --master-size=t2.micro  --master-volume-size=8 --node-volume-size=8 --yes
+kops create cluster --name=demok8s --state=s3://dev2.local  --zones=ap-south-1a,ap-south-1b,ap-south-1c --node-count=1 --node-size=t2.micro --control-plane-zones=ap-south-1a --control-plane-size=t2.micro --control-plane-volume-size=8 --node-volume-size=8 --yes
+kops edit cluster myfirstcluster.k8s.local --state=s3://dev.local
+Suggestions:
+ * validate cluster: kops validate cluster --wait 10m
+ * list nodes: kubectl get nodes --show-labels
+ * ssh to a control-plane node: ssh -i ~/.ssh/id_rsa ubuntu@
