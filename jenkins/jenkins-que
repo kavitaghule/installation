@@ -65,5 +65,5 @@ Manage Jenkins" > "Configure System." Look for the "Timestamper" section, where 
 tick for timestapm in job | so we see in build |The TimeStamper plugin enhances the readability and usability of the
 console output
 
-
+11} what is diff between scripted annd declarative pipeline
 
