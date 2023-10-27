@@ -1,0 +1,66 @@
+1} how to reset passwd
+/var/lib/jenkins/config.xml
+see usersecurity>true<user 
+see usersecurity>false<user 
+java --jar systemctl restart    //restart jenkins
+it open manage jenkins/configure system/ //window
+
+2} way to restart jenkins
+systemctl restart jenkins / java --jar systemctl restart      //service resart by cli
+localhost:8080/restart         //on tomcat url
+manage jenkins/manage plugin/search safe resart/install resart safely -yes //via jenkins plugin
+
+3} how to change jenkins home dir in linux
+mkdir -p /opt/jenkins_home/
+go to default location -> /root/.jenkins/
+cp . /opt/jenkins_home/   // copy all files to new dir
+su jenkins
+chown -R jenkins:jenkins jenkins_home
+vi /etc/default/jenkins
+JENKINS_HOME = /opt/jenkins_home/   // replace  /root/.jenkins/ > /opt/jenkins_home/
+vi /etc/passwd/
+jenkins:X:127:135:jenkins:/opt/jenkins_home:/bin/bash
+systemctl restart jenkins
+
+4} integrate maven with jenkins
+insall maven on cli
+export path
+on jenkins /manage jenkins/global tool configuration/maven/
+add maven |name=3.8.6 | maven home = /mnt/apache-maven-3.8.6/
+
+5} sequential and parallel job
+paralel=ex- test,qa build will done same time
+sequential =ex- dev-test-staging-prod -> create dev test prod job/ i n post buid action -build after project- put dev
+in dev put test| in test put stage| in stage put prod : hence all build run one after one 
+
+6} how to add creadential for private
+/manage jenkins/ manage credentials/ system/ global credential
+add credentials / username with passwd        /scope global
+                  github app
+                  ssh username with private-key
+                  secretefile
+                  secret text
+                   certificate
+ for git creadentials 
+token generate on git hub 
+/ username with passwd= username=userid of github | passwd=token| id = github repo credential| discription= same as id
+after that in jenkins-job select credentials 
+
+7} how to change workspace/jenkins_home in jenkins
+job-configure-use custom workspace 
+dir=/mnt/jenkins/
+
+8}where application logs store
+/var/log,
+Log Files Rotation:
+Organizations often configure log rotation to manage log files efficiently. This includes compressing and archiving
+older log files to prevent them from consuming too much disk space.
+
+9} how to set time according to contry in jenkins for build job
+build periodically = H 10 * * * TZ=America/New_York
+
+
+
+
+
+
