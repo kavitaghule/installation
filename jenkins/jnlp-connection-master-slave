@@ -1,12 +1,35 @@
+1} Set Up SSH or JNLP Connections:
+
+Jenkins agents can be connected to the master using different protocols, such as -SSH or -JNLP (Java Web Start).
+SSH is a secure option for connecting agents, while JNLP is more straightforward. You can choose the method 
+that best suits your security and convenience needs.
+
 go to /jenkins-url/jenkins/computer
 built in node= controller
 have to create nodes 
 crete node1/permenant agent/ok//name/label/no of executer=2/3/4/
-remote dir=/opt/project-1
-lauch method= lauch agent via controller
+remote dir=/opt/project-1          // folde must be in linux
+label =dev /qa /test
+usage= use this node as much as possible
+lauch method= lauch agent via controller 
+,via ssh, via execution cmd on controller
 save
 prerequisits on node1=
 java installed
 run cmds given on node/ jenkins
 run cmd on node/ec2
 {nohup url & }= always have to run node1 online
+
+
+
+for ssh 
+lauch method= launch via ssh
+select host = private ip on server
+select credential = sshusername with privatekey
+ssh-keygen on cli paste private key id.rsa in credentials
+relaunch agent but still it is not connected
+copy /root/ssh/id.rsa.pub to /root/ssh/authorized-key at the end 
+
+
+use lable in job build run job on particular node
+
