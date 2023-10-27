@@ -56,11 +56,14 @@ Log Files Rotation:
 Organizations often configure log rotation to manage log files efficiently. This includes compressing and archiving
 older log files to prevent them from consuming too much disk space.
 
-9} how to set time according to contry in jenkins for build job
-build periodically = H 10 * * * TZ=America/New_York
+9} how to set time according to country in jenkins for build job
+build periodically = H 10 * * * TZ=America/New_York   |Europe/london,India/kolkata
 
-
-
+10} how to configure time stamper 
+Manage Jenkins" > "Manage Plugins> Timestamper" plugin
+Manage Jenkins" > "Configure System." Look for the "Timestamper" section, where you can adjust the timestamp format, 
+tick for timestapm in job | so we see in build |The TimeStamper plugin enhances the readability and usability of the
+console output
 
 
 
