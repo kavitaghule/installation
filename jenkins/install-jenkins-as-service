@@ -10,3 +10,4 @@ sudo systemctl enable jenkins
 sudo systemctl start jenkins
 sudo systemctl status jenkins
 #http://localhost:8080
+#sudo cat /var/lib/jenkins/secrets/initialAdminPassword 
