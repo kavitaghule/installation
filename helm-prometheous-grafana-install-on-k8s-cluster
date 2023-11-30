@@ -20,6 +20,28 @@ kubectl expose service grafana — type=NodePort — target-port=3000 — name=g
 
 
 
+helm forlder structure
+ Chart.yaml          # A YAML file containing information about the chart
+  LICENSE             # OPTIONAL: A plain text file containing the license for the chart
+  README.md           # OPTIONAL: A human-readable README file
+  values.yaml         # The default configuration values for this chart
+  values.schema.json  # OPTIONAL: A JSON Schema for imposing a structure on the values.yaml file
+  charts/             # A directory containing any charts upon which this chart depends.
+  crds/               # Custom Resource Definitions
+  templates/          # A directory of templates that, when combined with values,
+                      # will generate valid Kubernetes manifest files. deployment.yml
+  templates/NOTES.txt # OPTIONAL: A plain text file containing short usage notes
 ########### work with helm #################
 helm create app                    //creates folder structure for helm
+
+
+
+
+
+
+
+
+
+
+
 
