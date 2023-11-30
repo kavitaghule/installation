@@ -20,4 +20,6 @@ kubectl expose service grafana — type=NodePort — target-port=3000 — name=g
 
 
 
+########### work with helm #################
+helm create app                    //creates folder structure for helm
 
