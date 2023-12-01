@@ -1,0 +1,65 @@
+sudo amazon-linux-extras install epel -y
+yum install ansible -y
+ansible --version
+useradd ansible
+passwd ansible
+    123
+//newpassswd 123
+visudo // vi /etc/sudoers
+//root ALL=(ALL) ALL
+//ansible  ALL=(ALL) NOPASSWD: ALL
+vi /etc/ssh/sshd_config
+//permitrootlogin yes
+//passwdauthentication yes
+//service sshd restart
+
+########### static-inventory#########
+//vi /etc/ansible/hosts/inventory
+//add private ip of all nodes 
+//we can add group {web, qa, test}
+//[web]
+//172.78.38.99
+//172.83.73.92
+//[qa]
+##
+//ssh-keygen
+//ssh-copy-id ansible@172.78.38.99
+//ssh-copy-id ansible@172.83.73.92
+//ssh 172.83.73.92
+@@
+//run adhoc cmd 
+//ansible web[0] // run 1st no host
+//ansible web[1] // run 2st no host
+############# dynamic-inventory ##############
+//ansible inventory
+//using ansible plugin
+//ansible documentotion for plugins 
+
+ansible-galaxy collection install amazon.aws
+//download boto3 and botocore and pip3 
+pip --version
+//pip insatll
+wget https://bootstrap.pypa.io/pip/2.7get-pip.py {on home location} 
+python ./get-pip.py
+pip install boto3 //{automaticaly installs botocore}
+
+//we need to  provide aws creadentials for that
+//1} create iam role and attch to ansible m/c
+//2} aws configure - aws access key and secret key 
+
+
+vi aws_ec2.yml  //{example mdhe ahet tyach link vr}
+//1}plugin: aws_ec2
+//  regions: 
+//   - ap-south-1
+//   - us-east-1
+
+ansible-inventory -i aws_ec2.yml --list // ansible all --list-hosts
+
+
+
+
+
+
+
+
