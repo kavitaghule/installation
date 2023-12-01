@@ -11,7 +11,7 @@ visudo // vi /etc/sudoers
 vi /etc/ssh/sshd_config
 //permitrootlogin yes
 //passwdauthentication yes
-//service sshd restart
+service sshd restart
 
 ########### static-inventory#########
 //vi /etc/ansible/hosts/inventory
@@ -39,7 +39,7 @@ ansible-galaxy collection install amazon.aws
 //download boto3 and botocore and pip3 
 pip --version
 //pip insatll
-wget https://bootstrap.pypa.io/pip/2.7get-pip.py // https://bootstrap.pypa.io/get-pip.py {on home location} 
+wget  https://bootstrap.pypa.io/pip/2.7/get-pip.py  // https://bootstrap.pypa.io/get-pip.py {on home location} 
 python ./get-pip.py
 pip install boto3 //{automaticaly installs botocore}
 
@@ -49,16 +49,17 @@ pip install boto3 //{automaticaly installs botocore}
 
 
 vi aws_ec2.yml  //{example mdhe ahet tyach link vr}
-//1}plugin: aws_ec2
-//  regions: 
-//   - ap-south-1
-//   - us-east-1
+ plugin: aws_ec2
+ regions: 
+  - ap-south-1
+  - us-east-1
 
 ansible-inventory -i aws_ec2.yml --list // ansible all -i aws_ec2.yml --list-hosts
 
 //for adhoc cmd
 need to provide pem fie 
 private key save kraychi 
+ansible aws_ec2 -i aws_ec2.yml -m ping --private-key=demo1.pem -b
 
 
 
