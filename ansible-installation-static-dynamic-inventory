@@ -56,7 +56,9 @@ vi aws_ec2.yml  //{example mdhe ahet tyach link vr}
 
 ansible-inventory -i aws_ec2.yml --list // ansible all -i aws_ec2.yml --list-hosts
 
-
+//for adhoc cmd
+need to provide pem fie 
+private key save kraychi 
 
 
 
