@@ -3,10 +3,7 @@ sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinu
 sudo yum -y install vault
 sudo yum update -y
 vault server -dev
-
-
-
-
+########################
 Pre-Requisites:
 #####################
  Install Git
@@ -69,8 +66,13 @@ WantedBy=multi-user.target
 systemctl start vault.service
 systemctl status vault.service
 systemctl enable vault.service 
-----------------------------------------------------------------
+--------------------------------------------------------------
 Open vault in webUI:
  http://ec2ipaddress:8200
 
+enter 2
+enter 2
+useal key
+download all keys {root,key1,key2}
+enter key1 and key2 and root key and get started
 
