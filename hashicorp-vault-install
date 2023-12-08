@@ -69,10 +69,41 @@ systemctl enable vault.service
 --------------------------------------------------------------
 Open vault in webUI:
  http://ec2ipaddress:8200
-
-enter 2
-enter 2
+--------------------------------------------------
+key shares enter {2/3/5}
+key threshold enter {2/3/5}
 useal key
 download all keys {root,key1,key2}
-enter key1 and key2 and root key and get started
+master key portion {enter key1 and key2 and root key and get started}
+################################################
+
+enable new secret engine {kv}
+path = secret//docker//..
+enable engine
+path for secret =dockerhub
+version data-
+username = kavighule6
+password = kavighule6
+save
+--------------------------------------
+in jenkins 
+install plugins {hashicorp vault, hashicorp vault pipeline}
+manage jenkins/conf syastem/ give vault path {123.343.334.4:8200/}
+create jenkins credential
+vault token credential:  give root token
+-----------------------------
+use pipeline syntax 
+withvault:vaultplugin
+vault url : localhost:8200
+vault credential : jenkins credential {vault}
+add vault secret:
+path = secret/dockerhub
+enveironment variable = username
+keyname = username  {] van add pass key pair
+generate pipeline synantax
+sh 'doker login -u $username -p $password'
+
+
+
+
 
