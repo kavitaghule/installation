@@ -3,3 +3,100 @@ sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinu
 sudo yum -y install vault
 sudo yum update -y
 vault server -dev
+
+
+
+
+Pre-Requisites:
+#####################
+ Install Git
+ Install ApacheMaven
+ Install Java
+ Install docker
+ Install Jenkins
+ Hashicorp Vault
+  
+
+ • Install Java,Apache Maven,GIT,Jenkins...  
+Hashicorp Vault:
+####################
+
+ wget https://releases.hashicorp.com/vault/1.4.0/vault_1.4.0_linux_amd64.zip
+unzip vault_1.4.0_linux_amd64.zip
+cp vault /usr/bin
+mkdir /etc/vault
+mkdir /opt/vault-data
+mkdir -p /logs/vault
+vi /etc/vault/config.json
+{
+"listener": [{
+"tcp": {
+"address" : "0.0.0.0:8200",
+"tls_disable" : 1
+}
+}],
+"api_addr": "http://ip:8200",
+"storage": {
+    "file": {
+    "path" : "/opt/vault-data"
+    }
+ },
+"max_lease_ttl": "10h",
+"default_lease_ttl": "10h",
+"ui":true
+}
+vi /etc/systemd/system/vault.service
+-------------------------------------------------------------- 
+[Unit]
+Description=vault service
+Requires=network-online.target
+After=network-online.target
+ConditionFileNotEmpty=/etc/vault/config.json
+
+[Service]
+EnvironmentFile=-/etc/sysconfig/vault
+Environment=GOMAXPROCS=2
+Restart=on-failure
+ExecStart=/usr/bin/vault server -config=/etc/vault/config.json
+StandardOutput=/logs/vault/output.log
+StandardError=/logs/vault/error.log
+LimitMEMLOCK=infinity
+ExecReload=/bin/kill -HUP $MAINPID
+KillSignal=SIGTERM
+
+[Install]
+WantedBy=multi-user.target
+----------------------------------------------------------------
+
+systemctl start vault.service
+systemctl status vault.service
+systemctl enable vault.servicevi /etc/systemd/system/vault.service
+-------------------------------------------------------------- 
+[Unit]
+Description=vault service
+Requires=network-online.target
+After=network-online.target
+ConditionFileNotEmpty=/etc/vault/config.json
+
+[Service]
+EnvironmentFile=-/etc/sysconfig/vault
+Environment=GOMAXPROCS=2
+Restart=on-failure
+ExecStart=/usr/bin/vault server -config=/etc/vault/config.json
+StandardOutput=/logs/vault/output.log
+StandardError=/logs/vault/error.log
+LimitMEMLOCK=infinity
+ExecReload=/bin/kill -HUP $MAINPID
+KillSignal=SIGTERM
+
+[Install]
+WantedBy=multi-user.target
+----------------------------------------------------------------
+
+systemctl start vault.service
+systemctl status vault.service
+systemctl enable vault.service
+Open vault in webUI:
+ http://ec2ipaddress:8200
+
+
