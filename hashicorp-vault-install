@@ -101,6 +101,9 @@ path = secret/dockerhub
 enveironment variable = username
 keyname = username  {] van add pass key pair
 generate pipeline synantax
+withVault(configuration: [disableChildPoliciesOverride: false, timeout: 60, vaultCredentialId: 'vault', vaultUrl: 'http://13.234.66.196:8200'], vaultSecrets: [[engineVersion: 2, path: 'secret/dockerhub', secretValues: [[vaultKey: 'username'], [vaultKey: 'password']]]]) {
+    // some block
+}
 sh 'doker login -u $username -p $password'
 
 
