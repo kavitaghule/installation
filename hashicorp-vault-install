@@ -16,7 +16,6 @@ Pre-Requisites:
  Install Jenkins
  Hashicorp Vault
   
-
  • Install Java,Apache Maven,GIT,Jenkins...  
 Hashicorp Vault:
 ####################
@@ -67,35 +66,10 @@ KillSignal=SIGTERM
 [Install]
 WantedBy=multi-user.target
 ----------------------------------------------------------------
-
 systemctl start vault.service
 systemctl status vault.service
-systemctl enable vault.servicevi /etc/systemd/system/vault.service
--------------------------------------------------------------- 
-[Unit]
-Description=vault service
-Requires=network-online.target
-After=network-online.target
-ConditionFileNotEmpty=/etc/vault/config.json
-
-[Service]
-EnvironmentFile=-/etc/sysconfig/vault
-Environment=GOMAXPROCS=2
-Restart=on-failure
-ExecStart=/usr/bin/vault server -config=/etc/vault/config.json
-StandardOutput=/logs/vault/output.log
-StandardError=/logs/vault/error.log
-LimitMEMLOCK=infinity
-ExecReload=/bin/kill -HUP $MAINPID
-KillSignal=SIGTERM
-
-[Install]
-WantedBy=multi-user.target
+systemctl enable vault.service 
 ----------------------------------------------------------------
-
-systemctl start vault.service
-systemctl status vault.service
-systemctl enable vault.service
 Open vault in webUI:
  http://ec2ipaddress:8200
 
