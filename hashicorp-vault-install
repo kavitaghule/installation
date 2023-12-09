@@ -64,8 +64,8 @@ KillSignal=SIGTERM
 WantedBy=multi-user.target
 ----------------------------------------------------------------
 systemctl start vault.service
-systemctl status vault.service
 systemctl enable vault.service 
+systemctl status vault.service
 --------------------------------------------------------------
 Open vault in webUI:
  http://ec2ipaddress:8200
@@ -106,7 +106,8 @@ withVault(configuration: [disableChildPoliciesOverride: false, timeout: 60, vaul
 }
 sh 'doker login -u $username -p $password'
 
-
-
+------------------------------------
+on ui enable aws secret engine
+create iam role that gives access keys and secret key
 
 
