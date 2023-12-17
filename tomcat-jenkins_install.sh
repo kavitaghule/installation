@@ -1,3 +1,6 @@
+
+#################### jenkins as application ######################################
+-------------------------------------------
 #!/bin/bash
 sudo amazon-linux-extras install java-openjdk11 -y
 mkdir -p /opt/tomcat
@@ -10,7 +13,17 @@ chmod 777 startup.sh shutdown.sh catalina.sh
 ./startup.sh
 cd /opt/tomcat/apache-tomcat-10.0.0/webapps/
 wget https://get.jenkins.io/war-stable/2.401.3/jenkins.war
-
+-----------------------------------------------------
+############# jenkins as server ####################################################
+sudo wget -O /etc/yum.repos.d/jenkins.repo \
+    https://pkg.jenkins.io/redhat-stable/jenkins.repo
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+sudo yum upgrade
+# Add required dependencies for the jenkins package
+sudo yum install fontconfig java-17-openjdk
+sudo yum install jenkins
+sudo systemctl daemon-reload
+-----------------------------------------------
 
 //how to resolve 403 error in tomcat
 vi /mnt/apache-tomcat-10.0.0/conf/tomcat-user.xml
