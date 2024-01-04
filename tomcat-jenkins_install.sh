@@ -23,6 +23,9 @@ sudo yum upgrade
 sudo yum install fontconfig java-17-openjdk
 sudo yum install jenkins
 sudo systemctl daemon-reload
+sudo systemctl enable jenkins
+sudo systemctl start jenkins
+sudo systemctl status jenkins
 -----------------------------------------------
 
 //how to resolve 403 error in tomcat
