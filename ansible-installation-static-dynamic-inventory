@@ -12,6 +12,7 @@ vi /etc/ssh/sshd_config
 //permitrootlogin yes
 //passwdauthentication yes
 service sshd restart
+#sudo /etc/init.d/ssh start  (for ubuntu)
 
 ########### static-inventory#########
 //vi /etc/ansible/hosts/inventory
