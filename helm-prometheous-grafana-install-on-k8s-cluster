@@ -3,6 +3,16 @@ chmod 700 get_helm.sh
 ./get_helm.sh
 helm version
 
+git clone https://github.com/edcast/go-calc.git
+mkdir go-calc-chart
+cd go-calc-chart
+mkdir charts templates
+helm create go-calc
+helm package go-calc
+helm install go-calc ./go-calc-<VERSION>.tgz
+kubectl get pods
+kubectl get services
+helm delete go-calc -This will remove the Kubernetes resources created by the Helm chart
 
 # install prometheous: 
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
