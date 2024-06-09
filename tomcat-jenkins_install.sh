@@ -12,7 +12,7 @@ cd /opt/tomcat/apache-tomcat-10.0.0/bin/
 chmod 777 startup.sh shutdown.sh catalina.sh
 ./startup.sh
 cd /opt/tomcat/apache-tomcat-10.0.0/webapps/
-wget https://get.jenkins.io/war-stable/2.401.3/jenkins.war
+wget https://get.jenkins.io/war-stable/latest/jenkins.war
 -----------------------------------------------------
 ############# jenkins as server ####################################################
 sudo wget -O /etc/yum.repos.d/jenkins.repo \
