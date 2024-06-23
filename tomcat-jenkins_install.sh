@@ -24,8 +24,8 @@ rm -rf apache-tomcat-9.0.90.zip
 cd /opt/tomcat/apache-tomcat-9.0.90/bin/
 chmod 777 startup.sh shutdown.sh catalina.sh
 ./startup.sh
-cd /opt/tomcat/apache-tomcat-10.0.0/webapps/
-
+cd /opt/tomcat/apache-tomcat-9.0.90/webapps/
+wget https://get.jenkins.io/war-stable/2.7.2/jenkins.war
 -----------------------------------------------
 
 //how to resolve 403 error in tomcat
