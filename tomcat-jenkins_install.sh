@@ -14,18 +14,18 @@ chmod 777 startup.sh shutdown.sh catalina.sh
 cd /opt/tomcat/apache-tomcat-10.0.0/webapps/
 wget https://get.jenkins.io/war-stable/latest/jenkins.war
 -----------------------------------------------------
-############# jenkins as server ####################################################
-sudo wget -O /etc/yum.repos.d/jenkins.repo \
-    https://pkg.jenkins.io/redhat-stable/jenkins.repo
-sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
-sudo yum upgrade
-# Add required dependencies for the jenkins package
-sudo yum install fontconfig java-17-openjdk
-sudo yum install jenkins
-sudo systemctl daemon-reload
-sudo systemctl enable jenkins
-sudo systemctl start jenkins
-sudo systemctl status jenkins
+#!/bin/bash
+sudo amazon-linux-extras install java-openjdk11 -y
+mkdir -p /opt/tomcat
+cd /opt/tomcat/
+wget https://archive.apache.org/dist/tomcat/tomcat-9/v9.0.90/bin/apache-tomcat-9.0.90.zip
+unzip apache-tomcat-9.0.90.zip
+rm -rf apache-tomcat-9.0.90.zip
+cd /opt/tomcat/apache-tomcat-9.0.90/bin/
+chmod 777 startup.sh shutdown.sh catalina.sh
+./startup.sh
+cd /opt/tomcat/apache-tomcat-10.0.0/webapps/
+
 -----------------------------------------------
 
 //how to resolve 403 error in tomcat
